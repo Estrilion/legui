@@ -28,8 +28,8 @@ printProjectInfo()
 
 idea { module { downloadJavadoc = true; downloadSources = true } }
 
-sourceCompatibility = JavaVersion.VERSION_16
-targetCompatibility = JavaVersion.VERSION_16
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
 
 compileJava.options.encoding = "UTF-8"
 compileTestJava.options.encoding = "UTF-8"
@@ -104,19 +104,29 @@ jar {
             'Full-Version': project.version)
 }
 
-def mavenLocalRepo = new File(project.buildDir.path, 'publish').toURI().toURL()
+
+
 publishing {
     repositories {
         maven {
-            url mavenLocalRepo
+            name = "EstrilionPackages"
+            url = uri("https://maven.pkg.github.com/Estrilion/rep")
+            credentials {
+                username = System.getenv("estrilion_user")
+                password = System.getenv("estrilion_token")
+            }
         }
     }
     publications {
-        mavenJava(MavenPublication) {
-            from components.java
+        gpr(MavenPublication) {
+            from(components.java)
+            groupId = 'com.spinyowl'
+            artifactId = 'legui'
+            version = "4.1.0"
         }
     }
 }
+
 
 // SONARQUBE CONFIGURATION
 def sonarLogin = System.getProperty("sonarLogin") ?: System.getenv("sonarLogin") ?: null

@@ -257,7 +257,7 @@ public class SingleClassExample {
 
   @NotNull
   private static Panel createPanel(Vector4f color) {
-    var panel = new Panel();
+    Panel panel = new Panel();
     panel.getStyle().setDisplay(FLEX);
     panel.getStyle().getFlexStyle().setFlexDirection(FlexDirection.ROW);
     panel.getStyle().setBorderRadius(0f);
