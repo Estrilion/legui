@@ -1,5 +1,10 @@
 package com.spinyowl.legui.config;
 
+import java.io.IOException;
+import java.lang.reflect.ParameterizedType;
+import java.util.HashMap;
+import java.util.Map;
+
 import com.spinyowl.legui.input.KeyCode;
 import com.spinyowl.legui.input.Keyboard;
 import com.spinyowl.legui.input.Shortcut;
@@ -7,9 +12,6 @@ import com.spinyowl.legui.util.IOUtil;
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
 import com.squareup.moshi.Types;
-import java.io.IOException;
-import java.lang.reflect.ParameterizedType;
-import java.util.Map;
 
 public class Configuration {
 
@@ -40,7 +42,7 @@ public class Configuration {
     ParameterizedType mapType = Types.newParameterizedType(Map.class, String.class, Object.class);
     JsonAdapter<Map<String, Object>> mapAdapter = moshi.adapter(mapType);
     try {
-      Map<String, Object> initialJson = getJson("defaultLegui.json", mapAdapter, Map.of());
+      Map<String, Object> initialJson = getJson("defaultLegui.json", mapAdapter, new HashMap<String, Object>());
       Map<String, Object> importedJson = getJson("legui.json", mapAdapter, null);
 
       merge(initialJson, importedJson);

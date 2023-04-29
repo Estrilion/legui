@@ -270,7 +270,9 @@ public class NvgPasswordInputRenderer extends NvgDefaultComponentRenderer<Passwo
       int length = text.length();
       int maskCharacter = gui.getMaskCharacter();
       char[] mask = Character.toChars(maskCharacter);
-      b.append(String.valueOf(mask).repeat(length));
+      for(int i = 0; i < length; i++) {
+    	  b.append(String.valueOf(mask));
+      }
       return b.toString();
     } else {
       return text;

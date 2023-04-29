@@ -6,10 +6,12 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.nio.Buffer;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+
 import org.apache.commons.io.IOUtils;
 
 /**
@@ -52,7 +54,7 @@ public final class IOUtil {
     }
     ByteBuffer data = ByteBuffer.allocateDirect(bytes.length).order(ByteOrder.nativeOrder())
         .put(bytes);
-    data.flip();
+    ((Buffer)data).flip();
     return data;
   }
 
