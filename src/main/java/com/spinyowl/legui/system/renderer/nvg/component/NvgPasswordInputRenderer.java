@@ -45,7 +45,7 @@ public class NvgPasswordInputRenderer extends NvgDefaultComponentRenderer<Passwo
   public static final String PALIGN = "palign";
   public static final String POFFSET = "poffset";
   private static final int MAX_GLYPH_COUNT = 1024;
-  private final Vector4f caretColor = new Vector4f(0, 0, 0, 0.5f);
+  private final Vector4f caretColor = new Vector4f(1f, 1f,1f,1f);
 
   @Override
   public void renderSelf(PasswordInput component, Context leguiContext, long nanovg) {
@@ -236,7 +236,7 @@ public class NvgPasswordInputRenderer extends NvgDefaultComponentRenderer<Passwo
               poffset);
           // render text
           NvgText.drawTextLineToRect(context,
-              new Vector4f(textBounds[4] - poffset, textBounds[5], textBounds[6], textBounds[7]),
+              new Vector4f(textBounds[4] - poffset, textBounds[5]+7, textBounds[6], textBounds[7]),
               false, HorizontalAlign.LEFT, VerticalAlign.MIDDLE, fontSize, font, maskedText,
               textColor);
 
@@ -331,7 +331,7 @@ public class NvgPasswordInputRenderer extends NvgDefaultComponentRenderer<Passwo
   }
 
   private void renderCaret(long context, Vector4f rect, float nCaretX) {
-    NvgShapes.drawLine(context, 1, caretColor, NVG_ROUND, nCaretX, rect.y, nCaretX,
+    NvgShapes.drawLine(context, 3, caretColor, NVG_ROUND, nCaretX, rect.y, nCaretX,
         rect.y + rect.w);
   }
 

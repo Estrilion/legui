@@ -56,7 +56,8 @@ public class NvgButtonRenderer extends NvgDefaultComponentRenderer<Button> {
       // Render text
       nvgIntersectScissor(nanovg, pos.x, pos.y, size.x, size.y);
       textState = component.getTextState();
-      rect = new Vector4f(pos, size.x(), size.y());
+      
+      rect = new Vector4f(new Vector2f(pos.x, pos.y+2), size.x(), size.y());
       fontSize = getStyle(component, Style::getFontSize, 16F);
 
       textState.setTextWidth(textBounds[2]);

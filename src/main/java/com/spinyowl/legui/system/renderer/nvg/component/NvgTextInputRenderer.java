@@ -46,7 +46,7 @@ public class NvgTextInputRenderer extends NvgDefaultComponentRenderer<TextInput>
   public static final String PALIGN = "palign";
   public static final String POFFSET = "poffset";
   private static final int MAX_GLYPH_COUNT = 1024;
-  private final Vector4f caretColor = new Vector4f(0, 0, 0, 0.5f);
+  private final Vector4f caretColor = new Vector4f(1f, 1f,1f,1f);
 
   /**
    * Used to render textInput.
@@ -326,7 +326,7 @@ public class NvgTextInputRenderer extends NvgDefaultComponentRenderer<TextInput>
   }
 
   private void renderCaret(long context, Vector4f rect, float nCaretX, Vector4f color) {
-    NvgShapes.drawLine(context, 1, color, NVG_ROUND, nCaretX, rect.y, nCaretX, rect.y + rect.w);
+    NvgShapes.drawLine(context, 3, color, NVG_ROUND, nCaretX, rect.y, nCaretX, rect.y + rect.w);
   }
 
   private float calculateCaretPos(int caretPosition, float[] textBounds, int ng,
